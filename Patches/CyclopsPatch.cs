@@ -17,6 +17,7 @@ namespace CyclopsDecals.Patches
         [HarmonyPatch(nameof(SubRoot.Awake))]
         public static void Prefix(SubRoot __instance)
         {
+            if (!__instance.isCyclops) return;
             if(!__instance.name.Contains("(Clone)"))
             {
                 Logger.Log(Logger.Level.Info, "Skipping prefab");
